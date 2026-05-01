@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Park View Academy | CBSE Affiliated | Excellence in Education</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+  <!-- AOS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --blue-deep: #0D2B6B;
+      --blue-royal: #1A4BA3;
+      --blue-mid: #2563C8;
+      --blue-light: #4A80D9;
+      --blue-pale: #EBF1FB;
+      --gold-accent: #C8922B;
+      --white: #ffffff;
+      --off-white: #F7F9FC;
+      --text-dark: #141925;
+      --text-body: #3B4560;
+      --text-muted: #6B7A99;
+      --shadow-sm: 0 2px 12px rgba(13,43,107,0.08);
+      --shadow-md: 0 6px 32px rgba(13,43,107,0.13);
+      --shadow-lg: 0 16px 60px rgba(13,43,107,0.18);
+      --radius: 12px;
+      --radius-lg: 20px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ─── UTILITY ─────────────────────────────── */
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .section-label::before,
+    .section-label::after {
+      content: '';
+      display: block;
+      height: 2px;
+      width: 28px;
+      background: var(--gold-accent);
+      border-radius: 2px;
+    }
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.85rem, 3.5vw, 2.7rem);
+      font-weight: 700;
+      color: var(--blue-deep);
+      line-height: 1.25;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--text-body);
+      line-height: 1.8;
+      max-width: 560px;
+    }
+    .btn-primary-school {
+      background: var(--blue-royal);
+      color: var(--white);
+      border: none;
+      padding: 13px 34px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      letter-spacing: 0.03em;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(26,75,163,0.35);
+    }
+    .btn-primary-school:hover {
+      background: var(--blue-deep);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(13,43,107,0.4);
+      color: var(--white);
+    }
+    .btn-outline-school {
+      background: transparent;
+      color: var(--blue-royal);
+      border: 2px solid var(--blue-royal);
+      padding: 11px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      transition: all 0.3s ease;
+    }
+    .btn-outline-school:hover {
+      background: var(--blue-royal);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* ─── TOP BAR ─────────────────────────────── */
+    #topbar {
+      background: var(--blue-deep);
+      padding: 7px 0;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.75);
+    }
+    #topbar a { color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.2s; }
+    #topbar a:hover { color: var(--white); }
+    .topbar-item { display: flex; align-items: center; gap: 6px; }
+    .topbar-divider { width: 1px; height: 14px; background: rgba(255,255,255,0.2); margin: 0 12px; }
+
+    /* ─── NAVBAR ──────────────────────────────── */
+    #mainNav {
+      background: var(--white);
+      padding: 14px 0;
+      box-shadow: 0 2px 20px rgba(13,43,107,0.08);
+      transition: all 0.35s ease;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    #mainNav.scrolled {
+      padding: 10px 0;
+      box-shadow: 0 4px 30px rgba(13,43,107,0.13);
+    }
+    .navbar-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-icon {
+      width: 46px; height: 46px;
+      background: var(--blue-deep);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white);
+      font-size: 1.3rem;
+      font-weight: 800;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .logo-icon::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 16px; height: 16px;
+      background: var(--gold-accent);
+      border-radius: 4px 0 0 0;
+    }
+    .logo-icon span { position: relative; z-index: 1; }
+    .brand-text .school-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--blue-deep);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+    .brand-text .school-tag {
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .navbar-nav .nav-link {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-body) !important;
+      padding: 6px 14px !important;
+      border-radius: 8px;
+      transition: all 0.25s ease;
+      position: relative;
+      letter-spacing: 0.01em;
+    }
+    .navbar-nav .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 2px; left: 14px; right: 14px;
+      height: 2px;
+      background: var(--blue-royal);
+      border-radius: 2px;
+      transform: scaleX(0);
+      transition: transform 0.25s ease;
+    }
+    .navbar-nav .nav-link:hover::after,
+    .navbar-nav .nav-link.active::after { transform: scaleX(1); }
+    .navbar-nav .nav-link:hover { color: var(--blue-royal) !important; }
+    .navbar-nav .nav-link.active { color: var(--blue-royal) !important; }
+    .nav-cta {
+      background: var(--blue-royal);
+      color: var(--white) !important;
+      padding: 8px 20px !important;
+      border-radius: 50px !important;
+      box-shadow: 0 3px 15px rgba(26,75,163,0.3);
+    }
+    .nav-cta:hover { background: var(--blue-deep) !important; transform: translateY(-1px); }
+    .nav-cta::after { display: none !important; }
+    .navbar-toggler {
+      border: none;
+      padding: 4px;
+    }
+    .navbar-toggler:focus { box-shadow: none; }
+    .hamburger-icon {
+      width: 26px;
+      display: flex; flex-direction: column; gap: 5px;
+    }
+    .hamburger-icon span {
+      display: block; height: 2px;
+      background: var(--blue-deep);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .navbar-toggler[aria-expanded="true"] .hamburger-icon span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .navbar-toggler[aria-expanded="true"] .hamburger-icon span:nth-child(2) {
+      opacity: 0; transform: scaleX(0);
+    }
+    .navbar-toggler[aria-expanded="true"] .hamburger-icon span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* ─── HERO ────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex; align-items: center;
+      overflow: hidden;
+    }
+
+    /* Slideshow */
+     ```css
+.hero-slideshow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Slide base */
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* No opacity */
+  visibility: hidden;
+
+  /* Only zoom animation */
+  transform: scale(1.06);
+  transition: transform 8s ease, visibility 0s linear 0.5s;
+}
+
+/* Active slide */
+.hero-slide.active { 
+  visibility: visible;
+  transform: scale(1);
+  transition: transform 8s ease;
+}
+
+/* Leaving slide */
+.hero-slide.leaving {
+  visibility: hidden;
+  transform: scale(1.04);
+  transition: transform 6s ease, visibility 0s linear 0.5s;
+}
+
+/* REMOVE overlay completely */
+.hero-slide-overlay,
+.hero-slide-overlay2 {
+  display: none;
+}
+```
+
+
+    /* Slide Arrows */
+    .hero-arrow {
+      position: absolute; top: 50%; z-index: 10;
+      transform: translateY(-50%);
+      width: 50px; height: 50px;
+      background: rgba(255,255,255,0.12);
+      border: 1.5px solid rgba(255,255,255,0.22);
+      backdrop-filter: blur(10px);
+      border-radius: 50%;
+      color: var(--white);
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s ease;
+    }
+    .hero-arrow:hover {
+      background: rgba(255,255,255,0.25);
+      border-color: rgba(255,255,255,0.5);
+      transform: translateY(-50%) scale(1.08);
+    }
+    .hero-arrow-prev { left: 28px; }
+    .hero-arrow-next { right: 28px; }
+
+    /* Slide Dots */
+    .hero-dots {
+      position: absolute; bottom: 80px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; gap: 10px;
+      z-index: 10;
+    }
+    .hero-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+      border: none; cursor: pointer;
+      transition: all 0.35s ease;
+      padding: 0;
+    }
+    .hero-dot.active {
+      background: var(--white);
+      width: 28px;
+      border-radius: 4px;
+    }
+    .hero-dot:hover { background: rgba(255,255,255,0.7); }
+
+    /* Progress bar per slide */
+    .hero-progress {
+      position: absolute; bottom: 0; left: 0;
+      height: 3px;
+      background: var(--gold-accent);
+      z-index: 10;
+      width: 0%;
+      transition: width linear;
+    }
+
+    .hero-pattern {
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 42px 42px;
+      z-index: 3;
+    }
+    .hero-content { position: relative; z-index: 5; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(8px);
+      color: rgba(255,255,255,0.9);
+      padding: 7px 18px;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero-badge i { color: var(--gold-accent); font-size: 0.9rem; }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.18;
+      margin-bottom: 22px;
+      letter-spacing: -0.02em;
+    }
+    .hero-title .accent-line {
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(255,255,255,0.6);
+      font-style: italic;
+    }
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.75;
+      max-width: 520px;
+      margin-bottom: 38px;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+    .btn-hero-primary {
+      background: var(--white);
+      color: var(--blue-deep);
+      border: none;
+      padding: 14px 36px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.93rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 28px rgba(0,0,0,0.2);
+    }
+    .btn-hero-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+      background: var(--off-white);
+      color: var(--blue-deep);
+    }
+    .btn-hero-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.4);
+      padding: 12px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.93rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-hero-outline:hover {
+      border-color: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.1);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+    .hero-stats {
+      display: flex; gap: 40px; flex-wrap: wrap;
+      margin-top: 56px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    .hero-stat-num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.6);
+      font-weight: 500;
+      margin-top: 4px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .hero-image-card {
+      position: relative;
+      z-index: 5;
+    }
+    .hero-card-float {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      text-align: center;
+      color: var(--white);
+    }
+    .hero-card-float h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .hero-card-float p { font-size: 0.8rem; opacity: 0.75; margin: 0; }
+    .hero-icon-ring {
+      width: 64px; height: 64px;
+      background: rgba(200,146,43,0.2);
+      border: 2px solid rgba(200,146,43,0.5);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 14px;
+      font-size: 1.6rem;
+    }
+    .scroll-hint {
+      position: absolute; bottom: 32px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      color: rgba(255,255,255,0.5); font-size: 0.7rem; letter-spacing: 0.1em;
+      text-transform: uppercase; z-index: 5;
+    }
+    .scroll-hint-line {
+      width: 1px; height: 36px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+      animation: scrollPulse 2s ease infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { transform: scaleY(1); opacity: 0.5; }
+      50% { transform: scaleY(0.6); opacity: 1; }
+    }
+
+    /* ─── ANNOUNCEMENT TICKER ─────────────────── */
+    #ticker {
+      background: var(--blue-pale);
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(13,43,107,0.08);
+    }
+    .ticker-label {
+      background: var(--blue-royal);
+      color: var(--white);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 4px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .ticker-track {
+      overflow: hidden;
+      position: relative;
+      flex: 1;
+      mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+    }
+    .ticker-inner {
+      display: flex; gap: 0;
+      animation: tickerScroll 35s linear infinite;
+      white-space: nowrap;
+    }
+    .ticker-item {
+      font-size: 0.82rem;
+      color: var(--text-body);
+      padding: 0 36px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .ticker-dot { width: 5px; height: 5px; background: var(--gold-accent); border-radius: 50%; flex-shrink: 0; }
+    @keyframes tickerScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ─── ABOUT ───────────────────────────────── */
+    #about { padding: 100px 0; background: var(--white); }
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-main-img {
+      width: 100%; border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      display: block;
+      aspect-ratio: 4/3; object-fit: cover;
+    }
+    .about-badge-float {
+      position: absolute; bottom: -20px; right: -20px;
+      background: var(--blue-deep);
+      color: var(--white);
+      padding: 22px 26px;
+      border-radius: var(--radius);
+      text-align: center;
+      box-shadow: var(--shadow-md);
+    }
+    .about-badge-float .num {
+      font-size: 2.2rem; font-weight: 800; line-height: 1;
+      color: var(--white);
+    }
+    .about-badge-float .lbl {
+      font-size: 0.7rem; font-weight: 600;
+      opacity: 0.75; letter-spacing: 0.06em;
+      text-transform: uppercase; margin-top: 4px;
+    }
+    .about-badge-float2 {
+      position: absolute; top: -18px; left: -18px;
+      background: var(--gold-accent);
+      color: var(--white);
+      padding: 14px 18px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      font-size: 0.78rem; font-weight: 700;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .affiliation-list { list-style: none; padding: 0; margin: 28px 0; }
+    .affiliation-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(13,43,107,0.06);
+      font-size: 0.93rem;
+      color: var(--text-body);
+    }
+    .affiliation-list li:last-child { border: none; }
+    .affiliation-list li i {
+      color: var(--blue-royal);
+      font-size: 1rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    /* ─── WHY CHOOSE US ───────────────────────── */
+    #why { padding: 100px 0; background: var(--off-white); }
+    .feature-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 40px 32px;
+      height: 100%;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(13,43,107,0.06);
+      transition: all 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue-royal), var(--blue-light));
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+    .feature-card:hover::before { transform: scaleX(1); }
+    .feature-icon {
+      width: 64px; height: 64px;
+      background: var(--blue-pale);
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      color: var(--blue-royal);
+      margin-bottom: 22px;
+      transition: all 0.35s ease;
+    }
+    .feature-card:hover .feature-icon {
+      background: var(--blue-royal);
+      color: var(--white);
+      transform: rotate(-5deg) scale(1.05);
+    }
+    .feature-card h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--blue-deep);
+      margin-bottom: 12px;
+    }
+    .feature-card p {
+      font-size: 0.88rem;
+      color: var(--text-body);
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    /* ─── ACADEMICS ───────────────────────────── */
+    #academics { padding: 100px 0; background: var(--white); }
+    .program-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(13,43,107,0.07);
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+    .program-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+    .program-header {
+      padding: 28px 28px 20px;
+      background: var(--blue-pale);
+    }
+    .program-grade {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--blue-royal);
+      margin-bottom: 6px;
+    }
+    .program-name {
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--blue-deep);
+      font-family: 'Playfair Display', serif;
+    }
+    .program-body { padding: 22px 28px 28px; }
+    .program-body ul {
+      list-style: none; padding: 0; margin: 0;
+    }
+    .program-body ul li {
+      font-size: 0.86rem; color: var(--text-body);
+      padding: 7px 0; border-bottom: 1px solid rgba(13,43,107,0.05);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .program-body ul li:last-child { border: none; }
+    .program-body ul li i { color: var(--blue-royal); font-size: 0.85rem; }
+
+    /* ─── GALLERY ─────────────────────────────── */
+    #gallery { padding: 100px 0; background: var(--off-white); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .gallery-grid .g-item:nth-child(1) { grid-row: span 2; }
+    .gallery-grid .g-item:nth-child(4) { grid-column: span 2; }
+    .g-item {
+      position: relative; overflow: hidden;
+      border-radius: var(--radius);
+      cursor: pointer;
+    }
+    .g-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .g-item:hover img { transform: scale(1.08); }
+    .g-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(13,43,107,0.75) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      display: flex; align-items: flex-end;
+      padding: 20px;
+    }
+    .g-item:hover .g-overlay { opacity: 1; }
+    .g-overlay span {
+      color: var(--white); font-size: 0.82rem; font-weight: 600;
+      display: flex; align-items: center; gap: 7px;
+    }
+
+    /* ─── LIGHTBOX ────────────────────────────── */
+    #lightbox {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(10,18,40,0.95);
+      z-index: 9999;
+      align-items: center; justify-content: center;
+      padding: 20px;
+    }
+    #lightbox.active { display: flex; }
+    #lightbox img {
+      max-width: 90vw; max-height: 85vh;
+      border-radius: var(--radius);
+      box-shadow: 0 30px 100px rgba(0,0,0,0.6);
+    }
+    #lightbox-close {
+      position: absolute; top: 20px; right: 24px;
+      color: rgba(255,255,255,0.7); font-size: 2rem;
+      cursor: pointer; transition: color 0.2s; line-height: 1;
+      background: none; border: none;
+    }
+    #lightbox-close:hover { color: var(--white); }
+
+    /* ─── TESTIMONIALS ────────────────────────── */
+    #testimonials { padding: 100px 0; background: var(--blue-deep); position: relative; overflow: hidden; }
+    #testimonials::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .testimonial-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      height: 100%;
+      transition: all 0.3s ease;
+    }
+    .testimonial-card:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-4px);
+    }
+    .quote-icon { font-size: 2.2rem; color: var(--gold-accent); margin-bottom: 16px; }
+    .testimonial-text {
+      font-size: 0.93rem;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.85;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .testimonial-author { display: flex; align-items: center; gap: 14px; }
+    .author-avatar {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: var(--blue-royal);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; font-weight: 700; color: var(--white);
+      flex-shrink: 0;
+    }
+    .author-name { font-size: 0.9rem; font-weight: 700; color: var(--white); }
+    .author-role { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
+    .stars { color: var(--gold-accent); font-size: 0.75rem; margin-bottom: 3px; }
+
+    /* ─── CTA SECTION ─────────────────────────── */
+    #cta {
+      padding: 90px 0;
+      background: linear-gradient(135deg, var(--blue-royal) 0%, var(--blue-deep) 100%);
+      position: relative; overflow: hidden;
+    }
+    #cta::before {
+      content: '';
+      position: absolute; top: -50%; right: -10%;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+    #cta::after {
+      content: '';
+      position: absolute; bottom: -30%; left: -5%;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: rgba(200,146,43,0.08);
+    }
+    .cta-inner { position: relative; z-index: 1; }
+    .cta-badge {
+      display: inline-block;
+      background: rgba(200,146,43,0.2);
+      border: 1px solid rgba(200,146,43,0.4);
+      color: #e8b84b;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 6px 16px; border-radius: 50px;
+      margin-bottom: 18px;
+    }
+    .cta-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700; color: var(--white);
+      line-height: 1.25; margin-bottom: 16px;
+    }
+    .cta-sub { font-size: 1rem; color: rgba(255,255,255,0.72); margin-bottom: 36px; }
+    .btn-cta-white {
+      background: var(--white);
+      color: var(--blue-deep);
+      border: none;
+      padding: 15px 40px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 28px rgba(0,0,0,0.2);
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-cta-white:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+      background: var(--off-white);
+      color: var(--blue-deep);
+    }
+    .cta-info-row { display: flex; flex-wrap: wrap; gap: 32px; margin-top: 40px; }
+    .cta-info-item { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.7); font-size: 0.88rem; }
+    .cta-info-item i { color: var(--gold-accent); font-size: 1rem; }
+
+    /* ─── FOOTER ──────────────────────────────── */
+    #footer {
+      background: #0A1628;
+      padding: 80px 0 0;
+    }
+    .footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .footer-logo .logo-icon { background: var(--blue-royal); }
+    .footer-logo .school-name { color: var(--white); }
+    .footer-logo .school-tag { color: rgba(255,255,255,0.4); }
+    .footer-desc {
+      font-size: 0.86rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.8;
+      margin-bottom: 24px;
+      max-width: 300px;
+    }
+    .social-links { display: flex; gap: 10px; }
+    .social-btn {
+      width: 38px; height: 38px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      transition: all 0.25s ease;
+      font-size: 0.95rem;
+    }
+    .social-btn:hover {
+      background: var(--blue-royal);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+    .footer-heading {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 20px;
+    }
+    .footer-links { list-style: none; padding: 0; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: flex; align-items: center; gap: 7px;
+    }
+    .footer-links a:hover { color: var(--white); padding-left: 4px; }
+    .footer-links a i { font-size: 0.7rem; color: var(--blue-light); }
+    .footer-contact-item {
+      display: flex; gap: 12px;
+      margin-bottom: 16px;
+      font-size: 0.86rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+    }
+    .footer-contact-item i {
+      color: var(--blue-light);
+      font-size: 1rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .footer-divider {
+      border-color: rgba(255,255,255,0.07);
+      margin: 60px 0 0;
+    }
+    .footer-bottom {
+      padding: 20px 0;
+      display: flex; flex-wrap: wrap;
+      justify-content: space-between; align-items: center;
+      gap: 12px;
+    }
+    .footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+    .footer-copy a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .footer-accred {
+      display: flex; gap: 12px;
+      flex-wrap: wrap; align-items: center;
+    }
+    .accred-tag {
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 4px 12px; border-radius: 4px;
+    }
+
+    /* ─── BACK TO TOP ─────────────────────────── */
+    #backToTop {
+      position: fixed; bottom: 28px; right: 28px;
+      width: 46px; height: 46px;
+      background: var(--blue-royal);
+      color: var(--white);
+      border: none;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      cursor: pointer;
+      opacity: 0; pointer-events: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(26,75,163,0.4);
+      z-index: 999;
+    }
+    #backToTop.visible { opacity: 1; pointer-events: auto; }
+    #backToTop:hover { background: var(--blue-deep); transform: translateY(-3px); }
+
+    /* ─── HERO ANIMATION ──────────────────────── */
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeInUp 0.75s ease forwards;
+    }
+    .fade-in-up.d1 { animation-delay: 0.15s; }
+    .fade-in-up.d2 { animation-delay: 0.35s; }
+    .fade-in-up.d3 { animation-delay: 0.55s; }
+    .fade-in-up.d4 { animation-delay: 0.75s; }
+    .fade-in-up.d5 { animation-delay: 0.95s; }
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── RESPONSIVE ──────────────────────────── */
+    @media (max-width: 991px) {
+      #about { padding: 70px 0; }
+      #why { padding: 70px 0; }
+      #gallery { padding: 70px 0; }
+      #testimonials { padding: 70px 0; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid .g-item:nth-child(1) { grid-row: auto; }
+      .gallery-grid .g-item:nth-child(4) { grid-column: auto; }
+      .about-img-wrap { margin-bottom: 60px; }
+      .about-badge-float { right: 0; bottom: -14px; }
+      .about-badge-float2 { left: 0; top: -14px; }
+      .hero-stats { gap: 24px; }
+      #topbar { display: none; }
+    }
+    @media (max-width: 767px) {
+      #hero { min-height: 100svh; }
+      .hero-title { font-size: 2rem; }
+      .hero-stats { gap: 16px; margin-top: 36px; padding-top: 28px; }
+      .hero-stat-num { font-size: 1.4rem; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .section-heading { font-size: 1.7rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .hero-image-card { margin-top: 40px; display: none; }
+      .cta-info-row { gap: 18px; }
+    }
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-grid .g-item { height: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════ TOP BAR -->
+<div id="topbar">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center flex-wrap gap-2">
+        <span class="topbar-item"><i class="bi bi-telephone-fill"></i> +91 97500 55557, 97500 55558</span>
+        <div class="topbar-divider"></div>
+        <span class="topbar-item"><i class="bi bi-envelope-fill"></i>parkviewacademy2020@gmail.com</span>
+        <div class="topbar-divider"></div> 
+        <span class="topbar-item"><i class="bi bi-geo-alt-fill"></i>  New Delhi </span>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <span style="font-size:0.72rem; color:rgba(255,255,255,0.55);">CBSE Affiliation No. 1930849</span>
+         
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ NAVBAR -->
+<nav id="mainNav" class="navbar navbar-expand-lg"> 
+  <div class="container">
+    <a class="navbar-brand" href="#">
+       
+        <img src="logo/pva.jpg" width="200px" height="40px">
+      
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-expanded="false">
+      <div class="hamburger-icon">
+        <span></span><span></span><span></span>
+      </div>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1 mt-3 mt-lg-0">
+        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#academics">Academics</a></li>
+        <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="#cta">Admissions</a></li>
+        <li class="nav-item ms-lg-2">
+           
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+<!-- ═══════════════════════════════════════════ HERO -->
+<section id="hero">
+  <!-- Slideshow Background -->
+  <div class="hero-slideshow">
+    <div class="hero-slide active" style="background-image:url('images/banner2.jpeg')"></div>
+    <div class="hero-slide" style="background-image:url('images/banner3.jpeg')"></div>
+    <div class="hero-slide" style="background-image:url('images/banner4.jpg')"></div>
+    <div class="hero-slide-overlay"></div>
+    <div class="hero-slide-overlay2"></div>
+  </div>
+  <!-- Slide Controls -->
+  <button class="hero-arrow hero-arrow-prev" id="slidePrev" aria-label="Previous slide">
+    <i class="bi bi-chevron-left"></i>
+  </button>
+  <button class="hero-arrow hero-arrow-next" id="slideNext" aria-label="Next slide">
+    <i class="bi bi-chevron-right"></i>
+  </button>
+  <!-- Slide Dots -->
+  <div class="hero-dots" id="heroDots">
+    <button class="hero-dot active" data-index="0" aria-label="Slide 1"></button>
+    <button class="hero-dot" data-index="1" aria-label="Slide 2"></button>
+    <button class="hero-dot" data-index="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="hero-pattern"></div>
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7"><br>
+        <div class="hero-content">
+          
+          <h1 class="hero-title fade-in-up d2">
+            Park View Academy<br>
+            CBSE School<br>
+             
+          </h1>
+          <p class="hero-subtitle fade-in-up d3">
+           Park View Academy, will be a platform for the kids to grow in a natural environment, to exhibit their multi-talented skill and to brighten their future to lead our nation in a patriotic way
+          </p>
+          <div class="hero-actions fade-in-up d4">
+            
+            <a href="#about" class="btn-hero-primary text-decoration-none">
+              <i class="bi bi-play-circle-fill"></i> Explore School
+            </a>
+          </div>
+          <div class="hero-stats fade-in-up d5">
+            <div>
+              <div class="hero-stat-num">3,200+</div>
+              <div class="hero-stat-label">Students Enrolled</div>
+            </div>
+            <div>
+              <div class="hero-stat-num">180+</div>
+              <div class="hero-stat-label">Qualified Faculty</div>
+            </div>
+            <div>
+              <div class="hero-stat-num">12 Yrs</div>
+              <div class="hero-stat-label">of Excellence</div>
+            </div>
+            <div>
+              <div class="hero-stat-num">98.4%</div>
+              <div class="hero-stat-label">Board Pass Rate</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="hero-image-card">
+          <div class="row g-4">
+            <div class="col-6">
+              <div class="hero-card-float" style="margin-top: 40px;">
+                <div class="hero-icon-ring"><i class="bi bi-mortarboard-fill"></i></div>
+                <h4>100% Board Results</h4>
+                <p>Class X & XII — Consecutive 12 Years</p>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="hero-card-float">
+                <div class="hero-icon-ring"><i class="bi bi-trophy-fill"></i></div>
+                <h4>CBSE National Award</h4>
+                <p>Best School for Holistic Education</p>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="hero-card-float" style="display:flex; align-items:center; gap:18px; text-align:left;">
+                <div class="hero-icon-ring" style="margin:0;flex-shrink:0;"><i class="bi bi-geo-alt-fill"></i></div>
+                <div>
+                  <h4 style="margin-bottom:3px;">Prime Location</h4>
+                  <p>Mohanur Main Road, Aniyapuram, Namakkal - 637 017. 
+</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-hint-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ TICKER -->
+ <div id="ticker">
+  <div class="container">
+    <div class="d-flex align-items-center gap-3">
+      
+      <div class="ticker-track">
+        <div class="ticker-inner" id="tickerInner">
+          <span class="ticker-item"><span class="ticker-dot"></span>Established year.... 2014</span>
+          <span class="ticker-item"><span class="ticker-dot"></span>Chairman:Dr.S.K.Vel B.Com.,B.L.,
+</span>
+          <span class="ticker-item"><span class="ticker-dot"></span>Secretary: Mr.C.Thangaraju B.Sc.,B.L.,</span>
+          <span class="ticker-item"><span class="ticker-dot"></span>Correspondent: Mrs. K. Thamaraiselvi B.Sc.
+</span>
+          <span class="ticker-item"><span class="ticker-dot"></span> Senior Principal:Mr. R. Balakrishnan</span>
+          <span class="ticker-item"><span class="ticker-dot"></span>Principal:Mr. S. Mekala M.sc., M.Phil., B.Ed.
+ </span>
+           
+           
+           
+           
+           
+          <span class="ticker-item"><span class="ticker-dot"></span>Parent-Teacher Meeting scheduled for December 14, 2024</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-5" data-aos="fade-right">
+        <div class="about-img-wrap" style="padding: 18px 18px 40px 0;">
+          <img
+            src="images/about.PNG"
+            alt="School Building"
+            class="about-main-img"
+          />
+          <div class="about-badge-float2">
+            <i class="bi bi-patch-check-fill" style="font-size:1.1rem;"></i>
+            CBSE Affiliated Since 2014
+          </div>
+          <div class="about-badge-float">
+            <div class="num">12+</div>
+            <div class="lbl">Years of<br>Excellence</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7" data-aos="fade-left" data-aos-delay="100">
+        <div class="section-label">About the School</div>
+        <h2 class="section-heading mb-4">Where Learning Meets<br>Lifelong Purpose</h2>
+        <p class="section-sub mb-3">
+          Our School is run by "Sellammal Memorial Educational Trust", Aniyapuram.
+
+This School aims to provide a world class education with affordable cost and to inculcate 'a sound mind in a sound body' and moral attitude to our students to gain self-confidence and self-reliance, there by enabling them to achieve a great place in a competitive environment since 2014.
+
+        </p>
+        
+        <ul class="affiliation-list mt-2">
+          <li><i class="bi bi-check-circle-fill"></i> CBSE Affiliation No. 1930849 — Board-certified curriculum from Pre-Primary to Class XII</li>
+          <li><i class="bi bi-check-circle-fill"></i>Spell - Bee Exam Training</li>
+          <li><i class="bi bi-check-circle-fill"></i>Hindi PracharSabha Exam Coaching.</li>
+          <li><i class="bi bi-check-circle-fill"></i>IAS Coaching Programmes are our unique features</li>
+          <li><i class="bi bi-check-circle-fill"></i>SOF SCIENCE OLYMPIAD FOUNDATION</li>
+        </ul>
+        <div class="d-flex gap-3 mt-4 flex-wrap">
+          <a href="#" class="btn-primary-school text-decoration-none">Discover Our Story</a>
+          <a href="#" class="btn-outline-school text-decoration-none">Meet Our Faculty</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ WHY CHOOSE US -->
+<section id="why">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-label" style="justify-content:center;">Why Choose PVA</div>
+      <h2 class="section-heading">Built for Every Dimension<br>of Your Child's Growth</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="bi bi-people-fill"></i></div>
+          <h4>Concept-Based Teaching</h4>
+          <p> The school emphasizes deep understanding rather than rote memorization. Concept-based teaching ensures that students grasp the “why” and “how” behind every topic.
+          This approach strengthens analytical thinking and long-term retention.
+.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="80">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="bi bi-building-check"></i></div>
+          <h4>Activity-Based Learning</h4>
+          <p> Learning at Park View Academy is dynamic and experiential. Activity-based teaching methods include hands-on exercises, group tasks, projects, demonstrations, and interactive sessions.
+</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="160">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="bi bi-journal-bookmark-fill"></i></div>
+          <h4>Continuous Assessment System</h4>
+          <p>The school follows a structured and continuous evaluation system to monitor student progress. Instead of relying solely on final examinations, students are assessed through periodic tests, assignments, projects, and classroom performance</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="240">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="bi bi-stars"></i></div>
+          <h4>AI-Based Learning Approach</h4>
+          <p>Park View Academy incorporates advanced AI-supported learning techniques to enhance the educational experience. This approach enables personalized learning pathways, helping students learn at their own pace and level of understanding.
+</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ ACADEMICS -->
+<section id="academics">
+  <div class="container">
+    <div class="row align-items-end mb-5">
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="section-label">Academic Programmes</div>
+        <h2 class="section-heading">A Curriculum Designed<br>for Tomorrow's Leaders</h2>
+      </div>
+      <div class="col-lg-6 text-lg-end mt-3 mt-lg-0" data-aos="fade-left">
+        <a href="#" class="btn-outline-school text-decoration-none">View Full Curriculum</a>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6" data-aos="fade-up">
+        <div class="program-card">
+          <div class="program-header">
+            
+            <div class="program-name">Home Fun is Usually<br>Assigned To</div>
+          </div>
+          <div class="program-body">
+            <ul>
+              <li><i class="bi bi-check2"></i>Help students to prepare for the next day.</li>
+              <li><i class="bi bi-check2"></i>Review concepts to ensure that students are learning and extending their academic performance</li>
+              <li><i class="bi bi-check2"></i>Inculcate the writing habit in them</li>
+              <li><i class="bi bi-check2"></i>Stress the importance of learning.
+</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="80">
+        <div class="program-card">
+          <div class="program-header">
+            
+            <div class="program-name">FACILITIES
+</div>
+          </div>
+          <div class="program-body">
+            <ul>
+              <li><i class="bi bi-check2"></i>Laboratories</li>
+              <li><i class="bi bi-check2"></i>Canteen</li>
+              <li><i class="bi bi-check2"></i>Playground</li>
+              <li><i class="bi bi-check2"></i>Library</li>
+              <li><i class="bi bi-check2"></i>Digital classrooms</li>
+              <li><i class="bi bi-check2"></i>Indoor games</li>
+              <li><i class="bi bi-check2"></i>CCTV Monitoring</li>
+              <li><i class="bi bi-check2"></i>Transport </li>
+              <li><i class="bi bi-check2"></i>Medical facility </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="160">
+        <div class="program-card">
+          <div class="program-header">
+            
+            <div class="program-name">SPORTS DETAILS</div>
+          </div>
+          <div class="program-body">
+            <ul>
+              <li><i class="bi bi-check2"></i>Relay</li>
+              <li><i class="bi bi-check2"></i>Shot Put</li>
+              <li><i class="bi bi-check2"></i>High jump</li>
+              <li><i class="bi bi-check2"></i>Skipping</li>
+              <li><i class="bi bi-check2"></i>Ringball</li>
+               <li><i class="bi bi-check2"></i>Football</li>
+                <li><i class="bi bi-check2"></i>Kabaddi</li>
+                 <li><i class="bi bi-check2"></i>Volleyball</li>
+                 <li><i class="bi bi-check2"></i>Disk Throw</li>
+                 
+
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="240">
+        <div class="program-card">
+          <div class="program-header">
+          
+            <div class="program-name">FEATURES</div>
+          </div>
+          <div class="program-body">
+            <ul>
+              <li><i class="bi bi-check2"></i>AI Powered Teaching Methodology</li>
+              <li><i class="bi bi-check2"></i>Robotics & Coding Programme</li>
+              <li><i class="bi bi-check2"></i>Foundation Coaching</li>
+              <li><i class="bi bi-check2"></i>LB Team Support for Strong Fundamentals</li>
+              <li><i class="bi bi-check2"></i>Dedicated Mother & Associate Teacher Support from Pre KG to GRADEI</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-label" style="justify-content:center;">Campus Life</div>
+      <h2 class="section-heading">Gallery at PVA</h2>
+    </div>
+    <div class="gallery-grid" data-aos="fade-up" data-aos-delay="80">
+      <div class="g-item" onclick="openLightbox(this)" style="min-height:300px;" data-caption="School Building — Main Campus">
+        <img src="images/gallery.PNG" alt="School Campus" loading="lazy" />
+        <div class="g-overlay"><span><i class="bi bi-zoom-in"></i> </span></div>
+      </div>
+      <div class="g-item" onclick="openLightbox(this)" style="height:200px;" data-caption="Science Laboratory">
+        <img src="images/gallery2.PNG" alt="Science Lab" loading="lazy" />
+        <div class="g-overlay"><span><i class="bi bi-zoom-in"></i></span></div>
+      </div>
+      <div class="g-item" onclick="openLightbox(this)" style="height:200px;" data-caption="Library & Learning Hub">
+        <img src="images/gallery3.PNG" alt="Library" loading="lazy" />
+        <div class="g-overlay"><span><i class="bi bi-zoom-in"></i></span></div>
+      </div>
+      <div class="g-item" onclick="openLightbox(this)" style="height:200px;" data-caption="Sports & Athletics Grounds">
+        <img src="images/gallery4.PNG" alt="Sports" loading="lazy" />
+        <div class="g-overlay"><span><i class="bi bi-zoom-in"></i></span></div>
+      </div>
+      <div class="g-item" onclick="openLightbox(this)" style="height:200px;" data-caption="Annual Cultural Festival">
+        <img src="images/gallery5.PNG" alt="Cultural Events" loading="lazy" />
+        <div class="g-overlay"><span><i class="bi bi-zoom-in"></i> </span></div>
+      </div>
+      <div class="g-item" onclick="openLightbox(this)" style="height:200px;" data-caption="Digital Classroom Technology">
+        <img src="images/gallery6.PNG" alt="Classroom" loading="lazy" />
+        <div class="g-overlay"><span><i class="bi bi-zoom-in"></i> Smart Classroom</span></div>
+      </div>
+    </div>
+    <div class="text-center mt-5" data-aos="fade-up">
+      <a href="#" class="btn-outline-school text-decoration-none">View Full Gallery &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox()">
+  <button id="lightbox-close" onclick="closeLightbox()">
+    <i class="bi bi-x-lg"></i>
+  </button>
+  <img id="lightbox-img" src="" alt="" />
+</div>
+
+<!-- ═══════════════════════════════════════════ TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-label" style="justify-content:center; color:#e8b84b;">
+        <span style="background:rgba(200,146,43,0.3);"></span>
+        What Families Say
+        <span style="background:rgba(200,146,43,0.3);"></span>
+      </div>
+      <h2 class="section-heading" style="color:var(--white);">Our Achivers</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+         <div class="testimonial-card">
+           
+        <img src="images/achiv1.jpeg" width="300px" height="450px">
+      </div>
+      </div>
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="testimonial-card">
+           
+            <img src="images/achiv2.jpeg" width="300px" height="450px">  
+               
+        </div>
+      </div>
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="testimonial-card">
+           <img src="images/achiv2.jpeg" width="300px" height="450px">  
+               
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ CTA -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7" data-aos="fade-right">
+          <div class="cta-badge">Admissions Open — 2025–26</div>
+          <h2 class="cta-title">Secure Your Child's Seat<br>at PVA Today</h2>
+          <p class="cta-sub">Limited seats available across all classes. Applications for the new academic year are being accepted on a first-come, first-served basis. Take the first step toward an exceptional education.</p>
+          <div class="d-flex flex-wrap gap-3 align-items-center">
+            <a href="#" class="btn-cta-white text-decoration-none">
+              <i class="bi bi-pencil-square"></i> Begin Application
+            </a>
+            <a href="#" style="color:rgba(255,255,255,0.75);font-size:0.9rem;text-decoration:none;display:flex;align-items:center;gap:7px;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.75)'">
+              <i class="bi bi-telephone"></i> Call Admissions Office
+            </a>
+          </div>
+          <div class="cta-info-row">
+            <div class="cta-info-item"><i class="bi bi-calendar3"></i> Application Deadline: March 31, 2025</div>
+            <div class="cta-info-item"><i class="bi bi-cash-coin"></i> Admission Test: April 12, 2025</div>
+            <div class="cta-info-item"><i class="bi bi-file-earmark-text"></i> Results: April 25, 2025</div>
+          </div>
+        </div>
+        <div class="col-lg-5" data-aos="fade-left" data-aos-delay="100">
+          <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:var(--radius-lg);padding:36px;">
+            <h4 style="color:var(--white);font-size:1.05rem;font-weight:700;margin-bottom:20px;">Quick Enquiry</h4>
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="Parent / Guardian Name" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:var(--white);border-radius:8px;padding:12px 16px;font-size:0.9rem;" />
+            </div>
+            <div class="mb-3">
+              <input type="tel" class="form-control" placeholder="Mobile Number" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:var(--white);border-radius:8px;padding:12px 16px;font-size:0.9rem;" />
+            </div>
+            <div class="mb-3">
+              <select class="form-select" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);border-radius:8px;padding:12px 16px;font-size:0.9rem;">
+                <option value="">Applying for Class...</option>
+                <option>Pre-Primary (Nursery / KG)</option>
+                <option>Class I – V (Primary)</option>
+                <option>Class VI – X (Middle/Secondary)</option>
+                <option>Class XI – XII (Senior Secondary)</option>
+              </select>
+            </div>
+            <button class="btn-cta-white w-100" style="justify-content:center;">
+              <i class="bi bi-send-fill"></i> Submit Enquiry
+            </button>
+            <p style="font-size:0.75rem;color:rgba(255,255,255,0.4);text-align:center;margin-top:14px;margin-bottom:0;">We'll respond within 24 hours · No spam, ever</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ FOOTER -->
+<footer id="footer">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4">
+        <div class="footer-logo">
+          
+          <div class="brand-text">
+           <img src="logo/pva.jpg" width="200px" height="40px">
+          </div>
+        </div>
+        <p class="footer-desc">
+         This School aims to provide a world class education with affordable cost and to inculcate 'a sound mind in a sound body' and moral attitude to our students to gain self-confidence and self-reliance, there by enabling them to achieve a great place in a competitive environment since 2014.
+        </p>
+        <div class="social-links">
+          <a href="#" class="social-btn" title="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="social-btn" title="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="social-btn" title="YouTube"><i class="bi bi-youtube"></i></a>
+          <a href="#" class="social-btn" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4">
+        <div class="footer-heading">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="#"><i class="bi bi-chevron-right"></i> Home</a></li>
+          <li><a href="#about"><i class="bi bi-chevron-right"></i> About the School</a></li>
+          <li><a href="#academics"><i class="bi bi-chevron-right"></i> Academics</a></li>
+          <li><a href="#gallery"><i class="bi bi-chevron-right"></i> Campus Gallery</a></li>
+          <li><a href="#cta"><i class="bi bi-chevron-right"></i> Admissions</a></li>
+          <li><a href="#"><i class="bi bi-chevron-right"></i> Contact Us</a></li>
+        </ul>
+      </div>
+       
+      <div class="col-lg-4 col-md-4">
+        <div class="footer-heading">Contact Information</div>
+        <div class="footer-contact-item">
+          <i class="bi bi-geo-alt-fill"></i>
+          <span>Mohanur Main Road, Aniyapuram, Namakkal - 637 017</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="bi bi-telephone-fill"></i>
+          <span>+91 97500 55557, 97500 55558</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="bi bi-envelope-fill"></i>
+          <span>parkviewacademy2020@gmail.com
+</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="bi bi-clock-fill"></i>
+          <span>Morning Assembly- 09.15 A.M - 3.55 A.M
+</span>
+        </div>
+      </div>
+    </div>
+    <hr class="footer-divider" />
+    <div class="footer-bottom">
+      <div class="footer-copy">
+        &copy; 2026 Park View Academy All rights reserved. |
+        <a href="#">Privacy Policy</a> · <a href="#">Terms of Use</a>
+      </div>
+      <div class="footer-accred">
+        
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════ BACK TO TOP -->
+<button id="backToTop" title="Back to top">
+  <i class="bi bi-arrow-up"></i>
+</button>
+
+<!-- ═══════════════════════════════════════════ SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  // AOS init
+  AOS.init({ duration: 720, once: true, offset: 60, easing: 'ease-out-cubic' });
+
+  // Navbar scroll
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+    document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 400);
+  });
+
+  // Back to top
+  document.getElementById('backToTop').addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Lightbox
+  function openLightbox(el) {
+    const lb = document.getElementById('lightbox');
+    const img = document.getElementById('lightbox-img');
+    img.src = el.querySelector('img').src;
+    img.alt = el.dataset.caption || '';
+    lb.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+  // Active nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.getAttribute('id');
+    });
+    navLinks.forEach(l => {
+      l.classList.remove('active');
+      if (l.getAttribute('href') === '#' + current) l.classList.add('active');
+    });
+  });
+
+  // ── HERO SLIDESHOW ──────────────────────────
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots   = document.querySelectorAll('.hero-dot');
+  let current  = 0;
+  let timer    = null;
+  const INTERVAL = 5000; // 5 s per slide
+
+  // Progress bar
+  const progressBar = document.createElement('div');
+  progressBar.className = 'hero-progress';
+  document.getElementById('hero').appendChild(progressBar);
+
+  function goToSlide(index) {
+    // Mark old slide as leaving
+    slides[current].classList.remove('active');
+    slides[current].classList.add('leaving');
+    dots[current].classList.remove('active');
+    setTimeout(() => slides[current < slides.length ? current : 0]
+      && document.querySelectorAll('.hero-slide.leaving').forEach(s => s.classList.remove('leaving')), 1400);
+
+    current = (index + slides.length) % slides.length;
+
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+
+    // Reset & animate progress bar
+    progressBar.style.transition = 'none';
+    progressBar.style.width = '0%';
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        progressBar.style.transition = `width ${INTERVAL}ms linear`;
+        progressBar.style.width = '100%';
+      });
+    });
+  }
+
+  function startAuto() {
+    clearInterval(timer);
+    timer = setInterval(() => goToSlide(current + 1), INTERVAL);
+  }
+
+  // Init progress bar
+  progressBar.style.transition = `width ${INTERVAL}ms linear`;
+  progressBar.style.width = '100%';
+
+  // Arrow controls
+  document.getElementById('slideNext').addEventListener('click', () => {
+    goToSlide(current + 1); startAuto();
+  });
+  document.getElementById('slidePrev').addEventListener('click', () => {
+    goToSlide(current - 1); startAuto();
+  });
+
+  // Dot controls
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      goToSlide(parseInt(dot.dataset.index)); startAuto();
+    });
+  });
+
+  // Pause on hover
+  document.getElementById('hero').addEventListener('mouseenter', () => clearInterval(timer));
+  document.getElementById('hero').addEventListener('mouseleave', startAuto);
+
+  // Touch swipe support
+  let touchStartX = 0;
+  document.getElementById('hero').addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  document.getElementById('hero').addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) { goToSlide(dx < 0 ? current + 1 : current - 1); startAuto(); }
+  });
+
+  startAuto();
+  // ────────────────────────────────────────────
+
+  document.querySelectorAll('.form-control, .form-select').forEach(el => {
+    el.style.setProperty('--bs-body-color', 'rgba(255,255,255,0.85)');
+  });
+</script>
+</body>
+</html>
